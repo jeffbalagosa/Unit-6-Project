@@ -39,6 +39,15 @@ function addPhraseToDisplay(arr) {
 
 addPhraseToDisplay(phraseArray);
 
+/*
+-Create a checkLetter function.
+-The checkLetter function will be used inside of the event listener you’ll write in the next step.
+-This function should have one parameter: the button the player has clicked when guessing a letter.
+-The checkLetter function should get all of the elements with a class of “letter” (remember that we added the letter class to all of the letters and none of the spaces when we made the game display). -The function should loop over the letters and check if they match the letter in the button the player has chosen.
+-If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.
+-If a match wasn’t found, the function should return null.
+*/
+
 // Create a checkLetter function.
 function checkLetter(qwertyKeyPress) {
   const phraseLetterLIs = document.querySelectorAll('.letter');
@@ -47,6 +56,10 @@ function checkLetter(qwertyKeyPress) {
     // If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.  If a match wasn’t found, the function should return null.
     if (qwertyKeyPress.toUpperCase() === phraseLetterLI) {
       phraseLetterLI.className = 'show';
+    } else {
+      // this else statment doesn't seem right, but idk how to really test this.
+      //  i tried just doing a checkletter('whatever letter I see in an li') in chrome dev console, but it always returns "null" even if = true
+      return null;
     }
   }
 }
