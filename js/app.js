@@ -23,11 +23,9 @@ function getRandomPhraseAsArray(arr) {
   return phraseAsArray;
 }
 
-// Set the game display.
 const phraseArray = getRandomPhraseAsArray(phrases);
 function addPhraseToDisplay(arr) {
-  // Create an addPhraseToDisplay function that loops through an array of characters. Inside the loop, for each character in the array, you’ll create a list item, put the character inside of the list item, and append that list item to the #phrase ul in your HTML. If the character in the array is a letter and not a space, the function should add the class “letter” to the list item.
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i += 1) {
     const e = arr[i];
     const li = document.createElement('li');
     li.textContent = e;
@@ -41,3 +39,5 @@ function addPhraseToDisplay(arr) {
 }
 
 addPhraseToDisplay(phraseArray);
+
+// Create a checkLetter function.
