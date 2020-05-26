@@ -40,3 +40,13 @@ function addPhraseToDisplay(arr) {
 addPhraseToDisplay(phraseArray);
 
 // Create a checkLetter function.
+function checkLetter(qwertyKeyPress) {
+  const phraseLetterLIs = document.querySelectorAll('.letter');
+  for (let i = 0; i < phraseLetterLIs.length; i += 1) {
+    const phraseLetterLI = phraseLetterLIs[i].textContent;
+    // If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.  If a match wasn’t found, the function should return null.
+    if (qwertyKeyPress.toUpperCase() === phraseLetterLI) {
+      phraseLetterLI.className = 'show';
+    }
+  }
+}
