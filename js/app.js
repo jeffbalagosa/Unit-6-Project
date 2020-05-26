@@ -21,3 +21,4 @@ function getRandomPhraseAsArray(arr) {
   const word = arr[listItem];
   const phraseAsArray = Array.from(word);
   return phraseAsArray;
+}
