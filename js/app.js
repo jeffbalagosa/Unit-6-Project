@@ -15,9 +15,9 @@ startButton.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-function listPicker(array) {
-  const listItem = Math.floor(Math.random() * Math.floor(array.length));
-  return array[listItem];
-}
-
-console.log(listPicker(phrases));
+// Create a getRandomPhraseAsArray function.
+function getRandomPhraseAsArray(arr) {
+  const listItem = Math.floor(Math.random() * Math.floor(arr.length));
+  const word = arr[listItem];
+  const phraseAsArray = Array.from(word);
+  return phraseAsArray;
