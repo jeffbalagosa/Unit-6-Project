@@ -15,7 +15,6 @@ startButton.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
-// Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr) {
   const listItem = Math.floor(Math.random() * Math.floor(arr.length));
   const word = arr[listItem];
