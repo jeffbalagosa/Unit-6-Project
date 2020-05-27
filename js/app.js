@@ -4,13 +4,16 @@ let missed = 0;
 const startButton = document.querySelector('.btn__reset');
 
 // Create a phrases array that contains at least 5 different phrases as strings.
-const phrases = [
-  'UP ALL NIGHT',
-  'TWIST OF FATE',
-  'WAY OF LIFE',
-  'ALL THINGS CONSIDERED',
-  'BADGE OF HONOR',
-];
+// const phrases = [
+//   'UP ALL NIGHT',
+//   'TWIST OF FATE',
+//   'WAY OF LIFE',
+//   'ALL THINGS CONSIDERED',
+//   'BADGE OF HONOR',
+// ];
+
+// for testing
+const phrases = ['UP ALL NIGHT'];
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 startButton.addEventListener('click', () => {
@@ -60,6 +63,13 @@ function checkLetter(qwertyKeyPress) {
 // Create a checkWin function.
 function checkWin() {
   // Check if the number of letters with class “show” is equal to the number of letters with class “letters”. If they’re equal, show the overlay screen with the “win” class and appropriate text.
+  const letterArray = document.querySelectorAll('.letter');
+  const showArray = document.querySelectorAll('.show');
+  if (letterArray.length === showArray.length) {
+    console.log(`letterArray.length = ${letterArray.length}`);
+    console.log(`showArray.length = ${showArray.length}`);
+    console.log('You win!');
+  }
 }
 
 // Add an event listener to the onscreen keyboard.
@@ -76,6 +86,7 @@ qwerty.addEventListener('click', (event) => {
     missed += 1;
   }
   console.log(`missed = ${missed}`);
+  checkWin();
 });
 
 /*
