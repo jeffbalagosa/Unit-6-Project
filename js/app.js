@@ -49,17 +49,20 @@ addPhraseToDisplay(phraseArray);
 */
 
 // Create a checkLetter function.
+const correctGuesses = [];
 function checkLetter(qwertyKeyPress) {
   const phraseLetterLIs = document.querySelectorAll('.letter');
   for (let i = 0; i < phraseLetterLIs.length; i += 1) {
     const phraseLetterLI = phraseLetterLIs[i].textContent;
-    // If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.  If a match wasn’t found, the function should return null.
+    // If there’s a match, the function should add the “show” class to the list item containing that letter, store the matching letter inside of a variable, and return that letter.
     if (qwertyKeyPress.toUpperCase() === phraseLetterLI) {
-      phraseLetterLI.className = 'show';
-    } else {
-      // this else statment doesn't seem right, but idk how to really test this.
-      //  i tried just doing a checkletter('whatever letter I see in an li') in chrome dev console, but it always returns "null" even if = true
-      return null;
+      correctGuesses.push(phraseLetterLI);
+      phraseLetterLIs[i].className = 'show';
     }
   }
+  if (correctGuesses.length > 0) {
+    return correctGuesses;
+  }
+  // If a match wasn’t found, the function should return null.
+  return null;
 }
