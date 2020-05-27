@@ -16,8 +16,8 @@ const startButton = document.querySelector('.btn__reset');
 const phrases = ['UP ALL NIGHT'];
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
+const overlay = document.getElementById('overlay');
 startButton.addEventListener('click', () => {
-  const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
 
