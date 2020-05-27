@@ -48,14 +48,18 @@ function addPhraseToDisplay(arr) {
 addPhraseToDisplay(phraseArray);
 
 // Create a checkLetter function.
-function checkLetter(qwertyKeyPress) {
+function checkLetter(letterClicked) {
   const phraseLetterLIs = document.querySelectorAll('.letter');
+  let letterCount = 0;
   for (let i = 0; i < phraseLetterLIs.length; i += 1) {
     const phraseLetterLI = phraseLetterLIs[i].textContent;
-    if (qwertyKeyPress.toUpperCase() === phraseLetterLI) {
+    if (letterClicked.toUpperCase() === phraseLetterLI) {
       phraseLetterLIs[i].className += ' show';
-      return phraseLetterLI;
+      letterCount += 1;
     }
+  }
+  if (letterCount > 0) {
+    return letterClicked;
   }
   return null;
 }
