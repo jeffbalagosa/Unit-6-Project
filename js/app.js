@@ -67,4 +67,11 @@ function checkLetter(qwertyKeyPress) {
   -Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound. At this point, you can open the index.html file, click any of the letters on the keyboard, and start to see the letters appear in the phrase.  
 */
 
-// Add an event listener to the keyboard.
+// Add an event listener to the onscreen keyboard.
+qwerty.addEventListener('click', (event) => {
+  const clickedButton = event.target;
+  console.log(clickedButton);
+  // When a player chooses a letter, add the “chosen” class to that button so the same letter can’t be chosen twice.
+  clickedButton.className = 'chosen';
+  clickedButton.disabled = true;
+});
