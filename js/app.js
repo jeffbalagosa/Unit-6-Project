@@ -50,11 +50,16 @@ function checkLetter(qwertyKeyPress) {
   for (let i = 0; i < phraseLetterLIs.length; i += 1) {
     const phraseLetterLI = phraseLetterLIs[i].textContent;
     if (qwertyKeyPress.toUpperCase() === phraseLetterLI) {
-      phraseLetterLIs[i].className = 'show';
+      phraseLetterLIs[i].className += ' show';
       return phraseLetterLI;
     }
   }
   return null;
+}
+
+// Create a checkWin function.
+function checkWin() {
+  // Check if the number of letters with class “show” is equal to the number of letters with class “letters”. If they’re equal, show the overlay screen with the “win” class and appropriate text.
 }
 
 // Add an event listener to the onscreen keyboard.
@@ -72,3 +77,8 @@ qwerty.addEventListener('click', (event) => {
   }
   console.log(`missed = ${missed}`);
 });
+
+/*
+-Create a checkWin function.
+  -Each time the player guesses a letter, this function will check whether the game has been won or lost. At the very end of the keyboard event listener, you’ll run this function to check if the number of letters with class “show” is equal to the number of letters with class “letters”. If they’re equal, show the overlay screen with the “win” class and appropriate text. Otherwise, if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
+*/
