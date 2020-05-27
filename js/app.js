@@ -50,15 +50,15 @@ addPhraseToDisplay(phraseArray);
 // Create a checkLetter function.
 function checkLetter(letterClicked) {
   const phraseLetterLIs = document.querySelectorAll('.letter');
-  let letterCount = 0;
+  let letterIsThere;
   for (let i = 0; i < phraseLetterLIs.length; i += 1) {
     const phraseLetterLI = phraseLetterLIs[i].textContent;
     if (letterClicked.toUpperCase() === phraseLetterLI) {
       phraseLetterLIs[i].className += ' show';
-      letterCount += 1;
+      letterIsThere = true;
     }
   }
-  if (letterCount > 0) {
+  if (letterIsThere) {
     return letterClicked;
   }
   return null;
