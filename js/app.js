@@ -91,18 +91,17 @@ function checkLetter(letterClicked) {
 function checkWin() {
   const letterArray = document.querySelectorAll('.letter');
   const showArray = document.querySelectorAll('.show');
-  const overlayTitle = document.querySelector('#overlay h2');
   // Set overlay for win or lose scenario.
   if (letterArray.length === showArray.length) {
     overlay.style.display = 'flex';
     overlay.className = 'win';
-    overlayTitle.textContent = 'Congratulations!  You win!';
     startButton.textContent = 'New game?';
+    overlay.innerHTML += '<p>You win! Why not try your luck again?</p>';
   } else if (missed > 4) {
     overlay.style.display = 'flex';
     overlay.className = 'lose';
-    overlayTitle.textContent = 'You lose!  better luck next time!';
     startButton.textContent = 'New game?';
+    overlay.innerHTML += '<p>You lose! Better luck next time!</p>';
   }
 }
 
