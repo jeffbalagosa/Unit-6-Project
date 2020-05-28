@@ -45,7 +45,14 @@ function addPhraseToDisplay(arr) {
 
 // create and set new game board
 function resetGame() {
+  missed = 0;
   phrase.querySelector('ul').innerHTML = '';
+  const qwertyButtons = qwerty.querySelectorAll('button');
+  for (let i = 0; i < qwertyButtons.length; i++) {
+    const eachButton = qwertyButtons[i];
+    eachButton.classList.remove('chosen');
+    eachButton.disabled = false;
+  }
   phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
 }
