@@ -39,11 +39,13 @@ function addPhraseToDisplay(arr) {
     } else {
       li.className = 'space';
     }
-    phrase.appendChild(li);
+    phrase.querySelector('ul').appendChild(li);
   }
 }
 
+// create and set new game board
 function resetGame() {
+  phrase.querySelector('ul').innerHTML = '';
   phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
 }
