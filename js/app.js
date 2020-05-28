@@ -43,6 +43,18 @@ function addPhraseToDisplay(arr) {
   }
 }
 
+// reset scoreboard section
+function resetScoreboard() {
+  const lis = document.querySelectorAll('#scoreboard li');
+  const images = document.querySelectorAll('#scoreboard img');
+  for (let i = 0; i < lis.length; i++) {
+    const li = lis[i];
+    const image = images[i];
+    image.src = 'images/liveHeart.png';
+    li.className = 'tries';
+  }
+}
+
 // create and set new game board
 function resetGame() {
   missed = 0;
@@ -53,6 +65,7 @@ function resetGame() {
     eachButton.classList.remove('chosen');
     eachButton.disabled = false;
   }
+  resetScoreboard();
   phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
 }
