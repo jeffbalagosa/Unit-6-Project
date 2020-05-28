@@ -2,23 +2,21 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 let missed = 0;
 const startButton = document.querySelector('.btn__reset');
+const overlay = document.getElementById('overlay');
 
 // Create a phrases array that contains at least 5 different phrases as strings.
-// const phrases = [
-//   'UP ALL NIGHT',
-//   'TWIST OF FATE',
-//   'WAY OF LIFE',
-//   'ALL THINGS CONSIDERED',
-//   'BADGE OF HONOR',
-// ];
-
-// for testing
-const phrases = ['UP ALL NIGHT'];
+const phrases = [
+  'UP ALL NIGHT',
+  'TWIST OF FATE',
+  'WAY OF LIFE',
+  'ALL THINGS CONSIDERED',
+  'BADGE OF HONOR',
+];
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
-const overlay = document.getElementById('overlay');
 startButton.addEventListener('click', () => {
   overlay.style.display = 'none';
+  resetGame();
 });
 
 // Create a getRandomPhraseAsArray function.
@@ -30,7 +28,7 @@ function getRandomPhraseAsArray(arr) {
 }
 
 // Set the game display.
-const phraseArray = getRandomPhraseAsArray(phrases);
+let phraseArray;
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i += 1) {
     const e = arr[i];
@@ -45,7 +43,10 @@ function addPhraseToDisplay(arr) {
   }
 }
 
-addPhraseToDisplay(phraseArray);
+function resetGame() {
+  phraseArray = getRandomPhraseAsArray(phrases);
+  addPhraseToDisplay(phraseArray);
+}
 
 // Create a checkLetter function.
 function checkLetter(letterClicked) {
@@ -66,13 +67,20 @@ function checkLetter(letterClicked) {
 
 // Create a checkWin function.
 function checkWin() {
-  // Check if the number of letters with class “show” is equal to the number of letters with class “letters”. If they’re equal, show the overlay screen with the “win” class and appropriate text.
   const letterArray = document.querySelectorAll('.letter');
   const showArray = document.querySelectorAll('.show');
+  const overlayTitle = document.querySelector('#overlay h2');
+  // Set overlay for win or lose scenario.
   if (letterArray.length === showArray.length) {
-    console.log(`letterArray.length = ${letterArray.length}`);
-    console.log(`showArray.length = ${showArray.length}`);
-    console.log('You win!');
+    overlay.style.display = 'flex';
+    overlay.className = 'win';
+    overlayTitle.textContent = 'Congratulations!  You win!';
+    startButton.textContent = 'New game?';
+  } else if (missed > 4) {
+    overlay.style.display = 'flex';
+    overlay.className = 'lose';
+    overlayTitle.textContent = 'You lose!  better luck next time!';
+    startButton.textContent = 'New game?';
   }
 }
 
@@ -82,18 +90,15 @@ qwerty.addEventListener('click', (event) => {
   // When a player chooses a letter, add the “chosen” class to that button so the same letter can’t be chosen twice.
   clickedButton.className = 'chosen';
   clickedButton.disabled = true;
-  // Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound. At this point, you can open the index.html file, click any of the letters on the keyboard, and start to see the letters appear in the phrase.
+  // Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound.
   const letterFound = checkLetter(clickedButton.textContent);
-  console.log(`letterFound = ${letterFound}`);
-  // Count the missed guesses in the game.
+  // Count the missed guesses in the game.  And remove hearts accordingly.
+  const triesArray = document.querySelectorAll('.tries');
+  const triesImageArray = document.querySelectorAll('.tries img');
   if (letterFound === null) {
     missed += 1;
+    triesArray[0].className = '';
+    triesImageArray[0].src = 'images/lostHeart.png';
   }
-  console.log(`missed = ${missed}`);
   checkWin();
 });
-
-/*
--Create a checkWin function.
-  -Each time the player guesses a letter, this function will check whether the game has been won or lost. At the very end of the keyboard event listener, you’ll run this function to check if the number of letters with class “show” is equal to the number of letters with class “letters”. If they’re equal, show the overlay screen with the “win” class and appropriate text. Otherwise, if the number of misses is equal to or greater than 5, show the overlay screen with the “lose” class and appropriate text.
-*/
