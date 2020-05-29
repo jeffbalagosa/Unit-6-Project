@@ -1,3 +1,5 @@
+// Thanks for taking a look!  You can find the Exceeds requirements on line 66 of app.js and line 96 of styles.css
+
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const startButton = document.querySelector('.btn__reset');
@@ -61,6 +63,7 @@ function resetKeyboard() {
   }
 }
 
+// For Exceeds.  A button has been added to the “lose” and “win” overlays to reset the game
 // Create and set new game board
 function resetGame() {
   missed = 0;
