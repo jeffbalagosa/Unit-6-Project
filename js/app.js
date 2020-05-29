@@ -1,9 +1,10 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-let missed = 0;
 const startButton = document.querySelector('.btn__reset');
 const overlay = document.getElementById('overlay');
 const p = document.createElement('p');
+const overlayParagraph = overlay.appendChild(p);
+let missed = 0;
 
 // Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = [
@@ -13,8 +14,6 @@ const phrases = [
   'ALL THINGS CONSIDERED',
   'BADGE OF HONOR',
 ];
-
-const overlayParagraph = overlay.appendChild(p);
 
 // Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr) {
