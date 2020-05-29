@@ -116,17 +116,19 @@ function checkWin() {
 qwerty.addEventListener('click', (event) => {
   const clickedButton = event.target;
   // When a player chooses a letter, add the “chosen” class to that button so the same letter can’t be chosen twice.
-  clickedButton.className = 'chosen';
-  clickedButton.disabled = true;
-  // Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound.
-  const letterFound = checkLetter(clickedButton.textContent);
-  // Count the missed guesses in the game.  And remove hearts accordingly.
-  const triesArray = document.querySelectorAll('.tries');
-  const triesImageArray = document.querySelectorAll('.tries img');
-  if (letterFound === null) {
-    missed += 1;
-    triesArray[0].className = '';
-    triesImageArray[0].src = 'images/lostHeart.png';
+  if (event.target.tagName === 'BUTTON') {
+    clickedButton.className = 'chosen';
+    clickedButton.disabled = true;
+    // Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound.
+    const letterFound = checkLetter(clickedButton.textContent);
+    // Count the missed guesses in the game.  And remove hearts accordingly.
+    const triesArray = document.querySelectorAll('.tries');
+    const triesImageArray = document.querySelectorAll('.tries img');
+    if (letterFound === null) {
+      missed += 1;
+      triesArray[0].className = '';
+      triesImageArray[0].src = 'images/lostHeart.png';
+    }
+    checkWin();
   }
-  checkWin();
 });
