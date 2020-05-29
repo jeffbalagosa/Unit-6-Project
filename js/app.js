@@ -3,6 +3,7 @@ const phrase = document.getElementById('phrase');
 let missed = 0;
 const startButton = document.querySelector('.btn__reset');
 const overlay = document.getElementById('overlay');
+const p = document.createElement('p');
 
 // Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = [
@@ -12,6 +13,8 @@ const phrases = [
   'ALL THINGS CONSIDERED',
   'BADGE OF HONOR',
 ];
+
+const overlayParagraph = overlay.appendChild(p);
 
 // Attach a event listener to the “Start Game” button to hide the start screen overlay.
 startButton.addEventListener('click', () => {
@@ -96,12 +99,12 @@ function checkWin() {
     overlay.style.display = 'flex';
     overlay.className = 'win';
     startButton.textContent = 'New game?';
-    overlay.innerHTML += '<p>You win! Why not try your luck again?</p>';
+    overlayParagraph.textContent = 'You lose! Why not try your luck again?';
   } else if (missed > 4) {
     overlay.style.display = 'flex';
     overlay.className = 'lose';
     startButton.textContent = 'New game?';
-    overlay.innerHTML += '<p>You lose! Better luck next time!</p>';
+    overlayParagraph.textContent = 'You lose! Better luck next time!';
   }
 }
 
