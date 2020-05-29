@@ -16,12 +16,6 @@ const phrases = [
 
 const overlayParagraph = overlay.appendChild(p);
 
-// Attach a event listener to the “Start Game” button to hide the start screen overlay.
-startButton.addEventListener('click', () => {
-  overlay.style.display = 'none';
-  resetGame();
-});
-
 // Create a getRandomPhraseAsArray function.
 function getRandomPhraseAsArray(arr) {
   const listItem = Math.floor(Math.random() * Math.floor(arr.length));
@@ -50,7 +44,7 @@ function addPhraseToDisplay(arr) {
 function resetScoreboard() {
   const lis = document.querySelectorAll('#scoreboard li');
   const images = document.querySelectorAll('#scoreboard img');
-  for (let i = 0; i < lis.length; i++) {
+  for (let i = 0; i < lis.length; i += 1) {
     const li = lis[i];
     const image = images[i];
     image.src = 'images/liveHeart.png';
@@ -63,7 +57,7 @@ function resetGame() {
   missed = 0;
   phrase.querySelector('ul').innerHTML = '';
   const qwertyButtons = qwerty.querySelectorAll('button');
-  for (let i = 0; i < qwertyButtons.length; i++) {
+  for (let i = 0; i < qwertyButtons.length; i += 1) {
     const eachButton = qwertyButtons[i];
     eachButton.classList.remove('chosen');
     eachButton.disabled = false;
@@ -72,6 +66,12 @@ function resetGame() {
   phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);
 }
+
+// Attach a event listener to the “Start Game” button to hide the start screen overlay.
+startButton.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  resetGame();
+});
 
 // Create a checkLetter function.
 function checkLetter(letterClicked) {
@@ -99,7 +99,7 @@ function checkWin() {
     overlay.style.display = 'flex';
     overlay.className = 'win';
     startButton.textContent = 'New game?';
-    overlayParagraph.textContent = 'You lose! Why not try your luck again?';
+    overlayParagraph.textContent = 'You win! Why not try your luck again?';
   } else if (missed > 4) {
     overlay.style.display = 'flex';
     overlay.className = 'lose';
