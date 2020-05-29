@@ -119,7 +119,7 @@ function checkWin() {
 qwerty.addEventListener('click', (event) => {
   const clickedButton = event.target;
   // When a player chooses a letter, add the “chosen” class to that button so the same letter can’t be chosen twice.
-  if (event.target.tagName === 'BUTTON') {
+  if (clickedButton.tagName === 'BUTTON') {
     clickedButton.className = 'chosen';
     clickedButton.disabled = true;
     // Pass the button to the checkLetter function, and store the letter returned inside of a variable called letterFound.
