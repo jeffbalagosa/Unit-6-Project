@@ -52,16 +52,21 @@ function resetScoreboard() {
   }
 }
 
-// create and set new game board
-function resetGame() {
-  missed = 0;
-  phrase.querySelector('ul').innerHTML = '';
+// Reset querty keyboard section
+function resetKeyboard() {
   const qwertyButtons = qwerty.querySelectorAll('button');
   for (let i = 0; i < qwertyButtons.length; i += 1) {
     const eachButton = qwertyButtons[i];
     eachButton.classList.remove('chosen');
     eachButton.disabled = false;
   }
+}
+
+// Create and set new game board
+function resetGame() {
+  missed = 0;
+  phrase.querySelector('ul').innerHTML = '';
+  resetKeyboard();
   resetScoreboard();
   phraseArray = getRandomPhraseAsArray(phrases);
   addPhraseToDisplay(phraseArray);

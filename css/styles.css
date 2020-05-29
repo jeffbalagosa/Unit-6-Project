@@ -93,6 +93,8 @@ p {
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
+  /* For Exceeds: Transitions have been added to the phrase display */
+  transition-property: background-color;
   transition-duration: 1s;
 }
 
