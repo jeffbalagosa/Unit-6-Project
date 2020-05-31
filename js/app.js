@@ -6,6 +6,7 @@ const startButton = document.querySelector('.btn__reset');
 const overlay = document.getElementById('overlay');
 const p = document.createElement('p');
 const overlayParagraph = overlay.appendChild(p);
+let phraseArray;
 let missed = 0;
 
 // Create a phrases array that contains at least 5 different phrases as strings.
@@ -26,7 +27,7 @@ function getRandomPhraseAsArray(arr) {
 }
 
 // Set the game display.
-let phraseArray;
+
 function addPhraseToDisplay(arr) {
   for (let i = 0; i < arr.length; i += 1) {
     const e = arr[i];
